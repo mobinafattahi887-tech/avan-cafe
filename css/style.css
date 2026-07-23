@@ -374,264 +374,483 @@
     .card-body p.desc{display:none;}
   }
   /* =====================================================
-   HERO SLIDER — یکپارچه و کاملاً فلوئید (بدون breakpoint‌های متضاد)
+   HERO SLIDER - PART 1
 ===================================================== */
 
 .hero{
     width:min(100%, 1400px);
-    margin:clamp(14px, 3vw, 28px) auto;
-    padding:0 16px;
+    margin:28px auto;
+    padding:0;
 }
 
 .hero-slider{
     position:relative;
     width:100%;
-    height:clamp(380px, 58vw, 580px);
+    height:430px;
     overflow:hidden;
-    border-radius:clamp(18px, 3vw, 32px);
+    border-radius:32px;
     background:transparent;
     box-shadow:0 18px 45px rgba(0,0,0,.12);
 }
 
 .hero-slide{
+
     position:absolute;
+
     inset:0;
+
     opacity:0;
+
     visibility:hidden;
-    transition:opacity .8s ease, transform 1.2s ease;
+
+    transition:
+    opacity .8s ease,
+    transform 1.2s ease;
+
     transform:scale(1.05);
+
 }
 
 .hero-slide.active{
+
     opacity:1;
+
     visibility:visible;
+
     transform:scale(1);
+
 }
 
-.hero-slide picture{
-    display:block;
-    width:100%;
-    height:100%;
-}
 
-.hero-slide img{
-    width:100%;
-    height:100%;
-    display:block;
-    object-fit:cover;
-    object-position:center;
-    transition:transform .8s ease;
-}
 
-/* از 992px به بالا، تصویر مخصوص دسکتاپ کامل و بدون برش نمایش داده می‌شود */
-@media(min-width:992px){
-    .hero-slide img{
-        object-fit:contain;
-        background:#fff;
-    }
-}
 
-.hero-overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(90deg,
-        rgba(0,0,0,.35) 0%,
-        rgba(0,0,0,.18) 40%,
-        rgba(0,0,0,.05) 65%,
-        rgba(0,0,0,0) 100%);
-    pointer-events:none;
-}
 
 .hero-content{
+
     position:absolute;
-    inset:0;
+
+    top:50%;
+
+    right:90px;
+
+    transform:translateY(-50%);
+
+    max-width:560px;
+
     z-index:5;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:flex-start;
-    text-align:right;
+
     color:#fff;
-    padding:clamp(24px,5vw,70px) clamp(88px,9vw,110px) clamp(24px,5vw,70px) clamp(24px,4vw,40px);
+
 }
 
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:10px 22px;
+
+    border-radius:60px;
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.22);
+
+    backdrop-filter:blur(14px);
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:28px;
+
+}
+/* =====================================================
+   HERO SLIDER - PART 2
+===================================================== */
+
+.hero-content h1{
+
+    font-size:clamp(42px,5vw,68px);
+
+    line-height:1.15;
+
+    font-weight:900;
+
+    margin-bottom:22px;
+
+    letter-spacing:-1px;
+
+    color:#fff;
+
+    text-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.hero-content p{
+
+    max-width:500px;
+
+    font-size:17px;
+
+    line-height:2;
+
+    color:rgba(255,255,255,.88);
+
+    margin-bottom:34px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-buttons a{
+
+    text-decoration:none;
+
+}
+
+.btn-primary{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:16px 34px;
+
+    border-radius:999px;
+
+    background:var(--gold);
+
+    color:#fff;
+
+    font-weight:700;
+
+    transition:.35s;
+
+    box-shadow:0 15px 35px rgba(180,145,75,.35);
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 25px 50px rgba(180,145,75,.45);
+
+}
+
+.btn-secondary{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:16px 34px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(255,255,255,.35);
+
+    color:#fff;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    transition:.35s;
+
+}
+
+.btn-secondary:hover{
+
+    background:#fff;
+
+    color:#16233A;
+
+}
+
+.hero-prev,
+.hero-next{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:58px;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(16px);
+
+    color:#fff;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    z-index:20;
+
+    transition:.3s;
+
+}
+
+.hero-prev{
+
+    left:28px;
+
+}
+
+.hero-next{
+
+    right:28px;
+
+}
+
+.hero-prev:hover,
+.hero-next:hover{
+
+    background:rgba(255,255,255,.28);
+
+    transform:translateY(-50%) scale(1.08);
+
+}
+
+.hero-dots{
+
+    position:absolute;
+
+    bottom:28px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    z-index:20;
+
+}
+
+.hero-dots span{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.45);
+
+    transition:.35s;
+
+    cursor:pointer;
+
+}
+
+.hero-dots span.active{
+
+    width:38px;
+
+    background:#fff;
+
+}
+/* =====================================================
+   HERO SLIDER - PART 3
+   Responsive + Final Polish
+===================================================== */
+
+/* افکت نمایش */
 .hero-slide.active .hero-content{
     animation:heroContentFade .9s ease .2s both;
 }
 
 @keyframes heroContentFade{
-    from{ opacity:0; transform:translateX(24px); }
-    to{ opacity:1; transform:translateX(0); }
+    from{
+        opacity:0;
+        transform:translateY(-50%) translateX(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(-50%) translateX(0);
+    }
 }
 
-.hero-badge{
-    display:inline-flex;
-    align-items:center;
-    padding:clamp(7px,1vw,10px) clamp(16px,2vw,22px);
-    border-radius:60px;
-    background:rgba(255,255,255,.12);
-    border:1px solid rgba(255,255,255,.22);
-    backdrop-filter:blur(14px);
-    font-size:clamp(11px,1.2vw,13px);
-    font-weight:700;
-    margin-bottom:clamp(14px,2vw,28px);
+/* کمی تیره‌تر شدن تصویر هنگام هاور */
+
+.hero-slide img{
+    transition:transform .8s ease;
 }
 
-.hero-content h1{
-    font-size:clamp(26px,4.6vw,68px);
-    line-height:1.25;
-    font-weight:900;
-    margin-bottom:clamp(10px,1.8vw,22px);
-    letter-spacing:-0.5px;
-    color:#fff;
-    text-shadow:0 10px 30px rgba(0,0,0,.35);
-    max-width:min(90vw, 620px);
+.hero-slide.active img{
+    transform:scale(1);
 }
 
-.hero-content p{
-    max-width:min(85vw, 500px);
-    font-size:clamp(13px,1.4vw,17px);
-    line-height:1.9;
-    color:rgba(255,255,255,.9);
-    margin-bottom:clamp(16px,2.5vw,34px);
-}
 
-.hero-buttons{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    flex-wrap:wrap;
-    justify-content:flex-start;
-}
+/* تبلت */
+@media (max-width:992px){
 
-.hero-buttons a{
-    text-decoration:none;
-}
+    .hero{
+        padding:0 16px;
+    }
 
-.btn-primary{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:clamp(12px,1.6vw,16px) clamp(22px,3vw,34px);
-    border-radius:999px;
-    background:var(--gold);
-    color:#fff;
-    font-weight:700;
-    font-size:clamp(13px,1.2vw,15px);
-    transition:.35s;
-    box-shadow:0 15px 35px rgba(180,145,75,.35);
-    white-space:nowrap;
-}
+    .hero-slider{
+        height:400px;
+        border-radius:26px;
+    }
 
-.btn-primary:hover{
-    transform:translateY(-4px);
-    box-shadow:0 25px 50px rgba(180,145,75,.45);
-}
-
-.btn-secondary{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:clamp(12px,1.6vw,16px) clamp(22px,3vw,34px);
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,.35);
-    color:#fff;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-    font-size:clamp(13px,1.2vw,15px);
-    transition:.35s;
-    white-space:nowrap;
-}
-
-.btn-secondary:hover{
-    background:#fff;
-    color:#16233A;
-}
-
-.hero-prev,
-.hero-next{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    width:clamp(38px,4vw,58px);
-    height:clamp(38px,4vw,58px);
-    border:none;
-    border-radius:50%;
-    background:rgba(255,255,255,.15);
-    backdrop-filter:blur(16px);
-    color:#fff;
-    font-size:clamp(16px,1.8vw,24px);
-    cursor:pointer;
-    z-index:20;
-    transition:.3s;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.hero-prev{ left:clamp(10px,2vw,28px); }
-.hero-next{ right:clamp(10px,2vw,28px); }
-
-.hero-prev:hover,
-.hero-next:hover{
-    background:rgba(255,255,255,.28);
-    transform:translateY(-50%) scale(1.08);
-}
-
-.hero-dots{
-    position:absolute;
-    bottom:clamp(14px,2vw,28px);
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    align-items:center;
-    gap:10px;
-    z-index:20;
-}
-
-.hero-dots span{
-    width:10px;
-    height:10px;
-    border-radius:999px;
-    background:rgba(255,255,255,.45);
-    transition:.35s;
-    cursor:pointer;
-}
-
-.hero-dots span.active{
-    width:32px;
-    background:#fff;
-}
-
-/* موبایل: دکمه‌ها زیر هم، پیکان‌ها مخفی، متن هم‌عرض کادر */
-@media(max-width:768px){
     .hero-content{
-        align-items:stretch;
-        padding:22px 22px 26px;
+        right:45px;
+        left:45px;
+        max-width:520px;
     }
-    .hero-content h1,
+
+    .hero-content h1{
+        font-size:44px;
+    }
+
     .hero-content p{
-        max-width:none;
+        font-size:15px;
+        line-height:1.9;
     }
+
+    .hero-prev,
+    .hero-next{
+        width:50px;
+        height:50px;
+        font-size:20px;
+    }
+}
+
+/* موبایل */
+@media (max-width:768px){
+
+    .hero-slider{
+        height:400px;
+        border-radius:22px;
+    }
+
+    .hero-overlay{
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        90deg,
+        rgba(0,0,0,.10) 0%,
+        rgba(0,0,0,.05) 35%,
+        rgba(0,0,0,.02) 60%,
+        rgba(0,0,0,0) 100%
+    );
+}
+
+    .hero-content{
+
+        right:24px;
+
+        left:24px;
+
+        top:auto;
+
+        bottom:34px;
+
+        transform:none;
+
+        max-width:none;
+
+    }
+
+    .hero-slide.active .hero-content{
+        animation:mobileHeroFade .8s ease both;
+    }
+
+    @keyframes mobileHeroFade{
+        from{
+            opacity:0;
+            transform:translateY(25px);
+        }
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
+
+    .hero-content h1{
+        font-size:32px;
+        line-height:1.35;
+        margin-bottom:14px;
+    }
+
+    .hero-content p{
+        font-size:14px;
+        margin-bottom:22px;
+    }
+
     .hero-buttons{
         width:100%;
         flex-direction:column;
     }
+
     .btn-primary,
     .btn-secondary{
         width:100%;
     }
+
     .hero-prev,
     .hero-next{
         display:none;
     }
+
+    .hero-dots{
+        bottom:16px;
+    }
 }
 
-/* گوشی‌های خیلی کوچک: پاراگراف و بج حذف می‌شن تا عنوان و دکمه جا باز کنن */
-@media(max-width:400px){
-    .hero-content p,
-    .hero-badge{
+/* گوشی‌های خیلی کوچک */
+@media (max-width:480px){
+    .hero{
+        padding:0 12px;
+    }
+
+    .hero-slider{
+        height:460px;   /* افزایش ارتفاع به جای 200px */
+    }
+
+    .hero-content h1{
+        font-size:26px;
+    }
+
+    .hero-content p{
         display:none;
+    }
+
+    .hero-badge{
+        display:none;   /* حذف بج برای صرفه‌جویی فضا */
     }
 }
     
@@ -955,21 +1174,36 @@ transform:translateY(0);
 /* ===== Promo Banner ===== */
 
 .promo-banner{
-    width:100%;
-    margin:34px 0 40px;
+    width:calc(100% - 24px);
+    margin:40px auto;
 }
 
 .promo-banner img{
     width:100%;
-    height:auto;
     display:block;
-    border-radius:26px;
+    border-radius:28px;
+    object-fit:cover;
     box-shadow:0 18px 45px rgba(0,0,0,.12);
     transition:.4s;
 }
 
 .promo-banner img:hover{
     transform:scale(1.01);
+}
+/* ===== Promo Banner ===== */
+
+.promo-banner{
+    width:100%;
+    margin:34px 0 40px;
+}
+
+.promo-banner img{
+    width:100%;
+    height:170px;
+    display:block;
+    object-fit:cover;
+    border-radius:26px;
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
 }
 .products-heading{
     text-align:center;
@@ -986,7 +1220,7 @@ transform:translateY(0);
 }
 
 .products-heading h2{
-    font-size:clamp(24px, 5vw, 42px);
+    font-size:42px;
     font-weight:900;
     color:#16233A;
     margin-bottom:14px;
@@ -1179,6 +1413,33 @@ body{
     gap:42px;
 }
 
+.hero{
+    padding:28px 40px;
+}
+
+.hero-slider{
+    height:560px;
+}
+
+.hero-slide{
+    height:100%;
+}
+
+.hero-content{
+    width:42%;
+    padding:70px;
+}
+
+.hero-content h1{
+    font-size:58px;
+    line-height:1.2;
+}
+
+.hero-content p{
+    font-size:19px;
+    max-width:520px;
+}
+
 .section{
     padding:90px 40px;
 }
@@ -1238,6 +1499,19 @@ body{
     grid-template-columns:repeat(3,1fr);
 }
 
+.hero-slide{
+    min-height:500px;
+}
+
+.hero-content{
+    width:46%;
+    padding:55px;
+}
+
+.hero-content h1{
+    font-size:48px;
+}
+
 .section{
     padding:70px 30px;
 }
@@ -1245,4 +1519,66 @@ body{
 .header-inner{
     padding:0 30px;
 }
+}
+.hero-slider{
+position:relative;
+height:430px;
+overflow:hidden;
+border-radius:30px;
+}
+
+.hero-slide{
+position:absolute;
+inset:0;
+opacity:0;
+visibility:hidden;
+transition:.7s;
+}
+
+.hero-slide.active{
+opacity:1;
+visibility:visible;
+}
+
+.hero-slide picture{
+display:block;
+width:100%;
+height:100%;
+}
+
+.hero-slide img{
+width:100%;
+height:100%;
+display:block;
+object-fit:cover;
+object-position:center;
+}
+
+@media(min-width:992px){
+
+.hero-slider{
+height:560px;
+}
+
+.hero-slide img{
+object-fit:contain;
+background:#fff;
+}
+
+}
+
+@media(max-width:991px){
+
+.hero-slider{
+height:430px;
+}
+
+.hero-slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+}
+
 }
